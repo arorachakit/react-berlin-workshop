@@ -1,9 +1,13 @@
 import Head from "next/head"
 import styles from "../styles/Home.module.css"
+import Layout from "../components/Layout"
 
-import { getStoryblokApi } from "@storyblok/react"
+import { getStoryblokApi, StoryblokComponent, useStoryblokState } from "@storyblok/react"
 
-export default function Home(props) {
+export default function Home({story}) {
+  story = useStoryblokState(story, {
+    resolveRelations: ["popular-articles.articles"],
+  })
   return (
     <div className={styles.container}>
       <Head>
@@ -12,13 +16,15 @@ export default function Home(props) {
       </Head>
 
       <header>
-        <h1>
+        {/* <h1>
           {props.story ? props.story.name : 'My Site'}
-        </h1>
+        </h1> */}
       </header>
 
       <main>
-
+      <Layout>
+        <StoryblokComponent blok={story.content} />
+      </Layout>
       </main>
     </div>
   )
@@ -31,6 +37,7 @@ export async function getStaticProps() {
   // load the draft version
   let sbParams = {
     version: "draft", // or 'published'
+    resolve_relations: ["popular-articles.articles"],
   };
 
   const storyblokApi = getStoryblokApi();

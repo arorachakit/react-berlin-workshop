@@ -7,8 +7,8 @@ import {
   StoryblokComponent,
 } from "@storyblok/react";
 
-export default function Page({ story, preview }) {
-  story = useStoryblokState(story, {}, preview);
+export default function Page({ story }) {
+  story = useStoryblokState(story);
 
   return (
     <div >

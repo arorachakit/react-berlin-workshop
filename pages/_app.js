@@ -5,17 +5,23 @@ import Grid from "../components/Grid";
 import Page from "../components/Page";
 import Teaser from "../components/Teaser";
 import Hero from "../components/Hero";
+import Article from '../components/Article';
+import AllArticles from '../components/AllArticles'
+import PopularArtices from '../components/PopularArticles';
 
 const components = {
   feature: Feature,
   grid: Grid,
   teaser: Teaser,
   page: Page,
-  hero: Hero
+  hero: Hero,
+  article: Article,
+  'all-articles': AllArticles,
+  'popular-articles': PopularArtices
 };
 
 storyblokInit({
-  accessToken: "6AusfH9XjZMFpVtEtEDzTwtt",
+  accessToken: "yRMjqUhByJG7Las0vyoH3wtt",
   use: [apiPlugin],
   components,
 });
